@@ -24,21 +24,21 @@ class TransactionsRepository {
   }
 
   public getBalance(): Balance {
-    const totalIncome = this.transactions.reduce((acc, curObj) => {
+    const totalIncome: number = this.transactions.reduce((acc, curObj) => {
       if (curObj.type === 'income') {
         return acc + curObj.value;
       }
-      return 0;
+      return acc;
     }, 0);
 
-    const totalOutcome = this.transactions.reduce((acc, curObj) => {
+    const totalOutcome: number = this.transactions.reduce((acc, curObj) => {
       if (curObj.type === 'outcome') {
         return acc + curObj.value;
       }
-      return 0;
+      return acc;
     }, 0);
 
-    const total = totalIncome - totalOutcome;
+    const total: number = totalIncome - totalOutcome;
 
     const balance: Balance = {
       income: totalIncome,

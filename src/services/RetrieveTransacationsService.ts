@@ -17,7 +17,7 @@ class RetrieveTransactionsService {
   public execute(): any {
     const transactions = this.transactionsRepository.all();
     const balance = this.transactionsRepository.getBalance();
-    const returnObj = { transactions, balance };
+    const returnObj = { transactions, balance }; // concat na lista de transactions com o final balance
     return returnObj;
   }
 }
