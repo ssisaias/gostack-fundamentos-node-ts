@@ -20,6 +20,15 @@ class CreateTransactionService {
       value,
       type,
     });
+    // validate current balance before operation
+
+    const curBalance = this.transactionsRepository.getBalance();
+    if (
+      transaction.type === 'outcome' &&
+      transaction.value > curBalance.total
+    ) {
+      throw Error('Insuficient balance!');
+    }
 
     return transaction;
   }
